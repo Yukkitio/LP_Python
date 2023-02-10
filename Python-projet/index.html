@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Python Web</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            * {
+                padding: 0px;
+                margin: 0px;
+            }
+
+            /* Path: style.css */
+            body {
+                background-color: #f2f2f2;
+                font-family: 'Open Sans', sans-serif;
+                font-size: 14px;
+                color: #333;
+                padding: 2%;
+            }
+
+            .container {
+                width: 80%;
+                margin: 0 auto;
+            }
+
+            .row {display: flex;}
+            .row > div {margin: 10px 10px;}
+
+            .col-md-4 {
+                width: calc(33.333333% - 20px);
+                background-color: #fff;
+                border: 1px solid #ccc;
+            }
+
+            .col-md-5 {
+                width: calc(50% - 20px);
+                background-color: #fff;
+                border: 1px solid #ccc;
+            }
+
+            .col-md-6 {
+                width: calc(50% - 20px);
+                background-color: #fff;
+                border: 1px solid #ccc;
+            }
+
+            .title {
+                display: flex;
+                align-items: center;
+                height: 5vh;
+                background-color: #f2f2f2;
+            }
+
+            ul {text-align: center;}
+
+            li {
+                list-style: none;
+                display: flex;
+            }
+
+            td,th {
+                border: 1px solid;
+                padding: 1vh;
+                text-align: center;
+            }
+
+            hr {margin: 6px;}
+            h3 {margin-left: 10px;}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="general-info col-md-4">
+                    <div class="title"><h3> - Infos generale</h3></div>
+                    <div style="display:flex;text-align:center;align-items:center;style-content:center">
+                        <ul style="padding:10px;margin-top:4vw;">
+                            <li><b><u>OS :</u></b>&nbsp; {{ os }}</li>
+                            <hr>
+                            <li><b><u>Uptime :</u></b>&nbsp; {{ uptime }}</li>
+                            <hr>
+                            <li><b><u>Hostname :</u></b>&nbsp; {{ hostname }}</li>
+                            <hr>
+                            <li><b><u>Kernel :</u></b>&nbsp; {{ kernel }}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="cpu-usage col-md-5">
+                    <div class="title"><h3> - Utilisation du CPU</h3></div>
+                    <div style="display: flex;justify-content: center;">
+                        <img src="data:image/png;base64,{{ graph_cpu_usage }}" style="width: 350px;" alt="Graphique CPU usage">
+                    </div>
+                </div>
+                <div class="memory-usage col-md-6">
+                    <div class="title"><h3> - Utilisation de la Memoire</h3></div>
+                    <div style="display: flex;justify-content: center;">
+                        <img src="data:image/png;base64,{{ graph_memory_usage }}" style="width: 350px;" alt="Graphique CPU usage">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="disk-usage col-md-5">
+                    <div class="title"><h3> - Utilisation Disque(s)</h3></div>
+                    <div style="padding: 10px;">
+                        {{ tab_disk_usage }}
+                    </div>
+                </div>
+                <div class="load-average col-md-5">
+                    <div class="title"><h3> - Load Average</h3></div>
+                    <div style="display: flex;justify-content: center;">
+                        {{ graph_load_average }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="network-usage col-md-5">
+                    <div class="title"><h3> - Utilisation Reseaux</h3></div>
+                    <div style="display: flex;justify-content: center;">
+                        <img src="data:image/png;base64,{{ graph_network_use }}" style="width: 350px;" alt="Graphique CPU usage">
+                    </div>
+                </div>
+                <div class="disk_io col-md-5">
+                    <div class="title"><h3> - Disque Lecture/Ecriture</h3></div>
+                    <div style="display: flex;justify-content: center;">
+                        <img src="data:image/png;base64,{{ graph_disk_io }}" style="width: 350px;" alt="Graphique CPU usage">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
